@@ -2,7 +2,7 @@ namespace CretaceousApi.Models
 {
   public class PaginationParams
   {
-    private const int _maxItemsPerPage = 50;
+    private const int _maxItemsPerPage = 5;
     private int _itemsPerPage;
 
     public int Page { get; set; } = 1;
