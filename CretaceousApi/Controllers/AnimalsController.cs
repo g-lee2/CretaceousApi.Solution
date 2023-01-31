@@ -17,7 +17,7 @@ namespace CretaceousApi.Controllers
 
     // GET api/animals
     [HttpGet]
-    public async Task<List<Animal>> Get(string species, string name, int minimumAge)
+    public async Task<List<Animal>> Get(string species, string name, int minimumAge, [FromQuery] PaginationParams @params)
     {
       IQueryable<Animal> query = _db.Animals.AsQueryable();
 
@@ -35,6 +35,9 @@ namespace CretaceousApi.Controllers
       {
         query = query.Where(entry => entry.Age >= minimumAge);
       }
+
+      int skip = (@params.Page - 1) * @params.ItemsPerPage;
+      query = query.Skip(skip).Take(@params.ItemsPerPage);
 
       return await query.ToListAsync();
     }
