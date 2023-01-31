@@ -3,13 +3,13 @@ namespace CretaceousApi.Models
   public class PaginationParams
   {
     private const int _maxItemsPerPage = 50;
-    private int itemsPerPage;
+    private int _itemsPerPage;
 
     public int Page { get; set; } = 1;
     public int ItemsPerPage
     {
-      get => itemsPerPage;
-      set => itemsPerPage = value > _maxItemsPerPage ? _maxItemsPerPage : value;
+      get => _itemsPerPage;
+      set => _itemsPerPage = value > _maxItemsPerPage ? _maxItemsPerPage : value;
     }
   }
 }
